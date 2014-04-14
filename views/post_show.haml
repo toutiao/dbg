@@ -1,0 +1,24 @@
+-# coding: UTF-8
+
+.span10
+  .info
+    = @posts.count
+  
+  -@posts.each do |post|
+    .post{:id => post.post_hash}
+      .row
+        %h3
+          = post.title
+  
+        %b
+          = post.author
+        %i
+          = post.post_hash
+  
+      .row
+        = post.content
+  
+      .row
+        - post.pictures.each do |pic|
+          %img.span2.thumbnail{:'data-src' => "holder.js/300x200", :src => pic.access_url}
+      %hr
