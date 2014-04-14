@@ -60,21 +60,21 @@ class AppController < Sinatra::Base
     end
   end
 
-  get '/post/:id/online' do
+  get '/admin/post/:id/online' do
     tag = params[:tag] || nil
     @post = Post.first(:id => params[:id])
     @post.update :published => true
 
     redirect "#{request.referrer}##{tag}"
   end
-  get '/post/:id/offline' do
+  get '/admin/post/:id/offline' do
     tag = params[:tag] || nil
     @post = Post.first(:id => params[:id])
     @post.update :published => false
 
     redirect "#{request.referrer}##{tag}"
   end
-  get '/post/:id/blacklist' do
+  get '/admin/post/:id/blacklist' do
     tag = params[:tag] || nil
     @post = Post.first(:id => params[:id])
     @post.deleted = true
@@ -83,13 +83,13 @@ class AppController < Sinatra::Base
     redirect "#{request.referrer}##{tag}"
   end
 
-  get '/post/:post_id' do
+  get '/admin/post/:post_id' do
     @posts = Post.all(:post_id => params[:post_id], :order => [:created_at.desc])
 
     haml :post_show
   end
 
-  get '/post/:post_id/:post_hash/mail' do
+  get '/admin/post/:post_id/:post_hash/mail' do
     post = Post.first(:post_id => params[:post_id], :post_hash => params[:post_hash])
     post_content = "#{post.content} \r\n #{post.post_url}"
 

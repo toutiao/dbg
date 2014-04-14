@@ -54,11 +54,11 @@
       %b{:class => post.published ? "online" : "offline"}
         = post.published ? "已发布" : "未发布"
     .row
-      %a.btn{:href => "/post/#{post.id}/blacklist?tag=p_#{@page}_i_#{idx}"} 删除
+      %a.btn{:href => "/admin/post/#{post.id}/blacklist?tag=p_#{@page}_i_#{idx}"} 删除
       - unless post.send_status == true
-        %a.btn{:href => "/post/#{post.post_id}/#{post.post_hash}/mail", :target => '_blank'} 发邮件
-      %a.btn{:href => "/post/#{post.id}/offline?tag=p_#{@page}_i_#{idx}"} 下线
-      %a.btn{:href => "/post/#{post.id}/online?tag=p_#{@page}_i_#{idx}"} 上线
+        %a.btn{:href => "/admin/post/#{post.post_id}/#{post.post_hash}/mail", :target => '_blank'} 发邮件
+      %a.btn{:href => "/admin/post/#{post.id}/offline?tag=p_#{@page}_i_#{idx}"} 下线
+      %a.btn{:href => "/admin/post/#{post.id}/online?tag=p_#{@page}_i_#{idx}"} 上线
   .row
     - post.pictures.each do |pic|
       %img.thumbnail{:'data-src' => pic.access_url, :src => pic.access_url_resize(240, 360), :rel => "#overlay"}
