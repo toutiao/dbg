@@ -1,5 +1,7 @@
 .urls
+.urls.*
 .std.out
+.std.out.*
 test.sqlite
 newpic/
 mail.yml
